@@ -3,28 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cobra SPX Claim Notification</title>
+  <title>SPX Notification</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
     }
 
-    /* Notification box */
     .notification {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      width: 330px;
       background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      border-left: 6px solid #2e8b57;
-      padding: 16px;
-      display: flex;
-      align-items: flex-start;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      padding: 12px;
       animation: slideIn 0.6s ease-out;
       z-index: 9999;
+      max-width: 320px;
+      cursor: pointer; /* pointer cursor on hover */
     }
 
     @keyframes slideIn {
@@ -33,84 +30,57 @@
     }
 
     .notification img {
-      width: 42px;
-      height: 42px;
-      margin-right: 12px;
-    }
-
-    .notification-content {
-      flex: 1;
-    }
-
-    .notification-content h4 {
-      margin: 0;
-      font-size: 16px;
-      color: #2e8b57;
-      font-weight: bold;
-    }
-
-    .notification-content p {
-      margin: 5px 0 12px;
-      font-size: 14px;
-      color: #333;
-    }
-
-    .notification button {
-      background: #2e8b57;
-      color: #fff;
-      border: none;
-      padding: 8px 14px;
-      font-size: 14px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .notification button:hover {
-      background: #256d45;
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
     }
 
     .close-btn {
-      background: transparent;
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
       border: none;
-      font-size: 18px;
+      border-radius: 50%;
+      width: 26px;
+      height: 26px;
       cursor: pointer;
-      color: #777;
-      margin-left: 8px;
+      font-size: 16px;
+      line-height: 26px;
+      text-align: center;
+    }
+
+    @media (max-width: 420px) {
+      .notification {
+        left: 10px;
+        right: 10px;
+        max-width: unset;
+      }
     }
   </style>
 </head>
 <body>
 
   <!-- Notification -->
-  <div class="notification" id="spxNotification">
-    <img src="https://img.icons8.com/color/48/000000/lock-2.png" alt="Cobra" />
-    <div class="notification-content">
-      <h4>Claim Your SPX</h4>
-      <p>Login to your Coinbase account to claim your SPX rewards.</p>
-      <button onclick="loginCobra()">Login Now</button>
-    </div>
-    <button class="close-btn" onclick="closeNotif()">×</button>
+  <div class="notification" id="spxNotification" onclick="redirectToFB()">
+    <button class="close-btn" onclick="event.stopPropagation(); closeNotif()">×</button>
+    <img src="https://1992gameofthrone1992.github.io/imagetopa/spx.jpeg" alt="SPX" />
   </div>
 
   <script>
     function closeNotif() {
-      document.getElementById("spxNotification").style.display = "none";
+      const n = document.getElementById("spxNotification");
+      n.style.transform = 'translateX(120%)';
+      n.style.opacity = '0';
+      setTimeout(()=> n.remove(), 400);
     }
 
-    function loginCobra() {
-      alert("Redirecting to Coinbase Account...");
-     
-      window.location.href = "https://multinevy1.pages.dev/blog";
+    function redirectToFB() {
+      window.location.href = "https://facebook.com";
     }
-
-   
-    // window.onload = () => {
-    //   setTimeout(() => {
-    //     document.getElementById("spxNotification").style.display = "flex";
-    //   }, 5000);
-    // };
   </script>
 
 </body>
 </html>
-
