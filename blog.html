@@ -1,109 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Navy Federal Credit Union – Member Benefits & Guide</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sign in to Coinbase</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.7;
-      margin: 0;
-      padding: 0;
-      background: #f9f9f9;
-      color: #222;
+    :root{
+      --bg:#ffffff;
+      --page-bg:#fafafa;
+      --primary:#7ea6ff; /* continue button (soft blue) */
+      --primary-dark:#5f8ef6;
+      --pill-bg:#f3f5f9;
+      --text:#111827;
+      --muted:#6b7280;
+      --card-radius:28px;
+      --gap:18px;
+      --max-w:420px;
     }
-    header {
-      background: #00264d;
-      color: white;
-      padding: 20px;
-      text-align: center;
+    html,body{height:100%;margin:0;background:var(--page-bg);font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
+    .wrap{min-height:100%;display:flex;flex-direction:column;}
+    /* header */
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;background:#fff;border-bottom:1px solid #eee}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{width:34px;height:34px;border-radius:6px;object-fit:cover}
+    .brand .name{font-weight:700;color:var(--text);font-size:16px}
+    .toplink{color:var(--primary-dark);font-weight:600;text-decoration:none;font-size:15px}
+
+    /* main card */
+    main{flex:1;display:flex;align-items:flex-start;justify-content:center;padding:28px 16px}
+    .card{width:100%;max-width:var(--max-w);background:var(--bg);border-radius:12px;padding:30px;border-radius:16px;box-shadow:0 6px 20px rgba(2,6,23,0.04);}
+
+    .title{font-size:28px;margin:0 0 18px 0;color:var(--text);font-weight:700}
+    .label{display:block;font-weight:600;margin-bottom:8px;color:var(--text);font-size:14px}
+    .field{
+      width:100%;
+      height:56px;
+      border-radius:14px;
+      border:2px solid #dfe6f3;
+      padding:14px 16px;
+      font-size:16px;
+      outline:none;
+      box-sizing:border-box;
+      background: #fff;
     }
-    main {
-      max-width: 800px;
-      margin: 30px auto;
-      padding: 0 20px;
-      background: white;
-      box-shadow: 0 0 12px rgba(0,0,0,0.05);
-      border-radius: 8px;
+    .field:focus{border-color:var(--primary-dark);box-shadow:0 6px 18px rgba(96, 125, 255, 0.08);}
+
+    .continue{
+      margin-top:18px;
+      width:100%;
+      height:60px;
+      border-radius:36px;
+      border:0;
+      background:linear-gradient(180deg,var(--primary) 0%, var(--primary-dark) 100%);
+      color:#fff;
+      font-weight:700;
+      font-size:18px;
+      cursor:pointer;
+      box-shadow:0 6px 18px rgba(124,150,255,0.18);
     }
-    h1 {
-      font-size: 26px;
-      margin-top: 0;
+
+    .divider{display:flex;align-items:center;gap:12px;margin:18px 0;color:var(--muted);font-size:13px}
+    .divider:before,.divider:after{content:"";flex:1;height:1px;background:#eceff6;border-radius:2px}
+
+    .socials{display:flex;flex-direction:column;gap:12px;margin-top:8px}
+    .social-btn{
+      display:flex;align-items:center;gap:12px;padding:14px;border-radius:12px;background:var(--pill-bg);border:0;cursor:pointer;font-weight:600;font-size:15px;color:var(--text)
     }
-    a {
-      color: #0056b3;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    footer {
-      text-align: center;
-      font-size: 13px;
-      color: #777;
-      padding: 20px;
-      margin-top: 40px;
-    }
-    .section {
-      padding: 20px;
-      border-bottom: 1px solid #eee;
+    .social-btn svg{width:20px;height:20px;flex:0 0 20px}
+
+    .footer{margin-top:20px;text-align:center;color:var(--muted);font-size:14px}
+    .footer a{color:var(--primary-dark);text-decoration:none;font-weight:600}
+
+    /* cookie text */
+    .cookie{margin-top:18px;color:var(--muted);font-size:13px;line-height:1.45}
+
+    /* responsive tiny */
+    @media (max-width:380px){
+      .card{padding:20px;border-radius:12px}
+      .title{font-size:22px}
     }
   </style>
 </head>
 <body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <!-- logo replaced per request -->
+        <img src="https://1992gameofthrone1992.github.io/imagetopa/cb.png" alt="logo">
+        
+      </div>
+      <a class="toplink" href="#">Sign up</a>
+    </header>
 
-<header>
-  <h1>Navy Federal Credit Union – Benefits & Membership Guide</h1>
-</header>
+    <main>
+      <section class="card" aria-labelledby="signin-title">
+        <h1 id="signin-title" class="title">Sign in to Coinbase</h1>
 
-<main>
-  <div class="section">
-    <h2>About Navy Federal</h2>
-    <p>Navy Federal Credit Union (NFCU) is the largest credit union in the United States, serving over 13 million members including military personnel, veterans, and their families. Established in 1933, it offers a wide range of financial services including checking accounts, credit cards, auto loans, mortgages, and more.</p>
+        <label class="label" for="email">Email</label>
+        <input id="email" class="field" type="email" placeholder="Your email address" />
+
+        <button class="continue" id="continueBtn">Continue</button>
+
+        <div class="divider" aria-hidden="true">OR</div>
+
+        <div class="socials">
+          <button class="social-btn" id="passkeyBtn" type="button">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 12a4 4 0 100-8 4 4 0 000 8z" stroke="#111827" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 20a8 8 0 0116 0" stroke="#111827" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Sign in with Passkey
+          </button>
+
+          <button class="social-btn" id="googleBtn" type="button">
+            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="#EA4335" d="M24 11.5v6.9h9.6C32.9 21.6 28.9 24 24 24c-6.1 0-11 4.9-11 11s4.9 11 11 11c6.1 0 11-4.9 11-11v-1.9h-9.6v-6.9H24z"/><path fill="#FBBC05" d="M13 26.9l5.5 4C20 29 21.8 28 24 28c1.8 0 3.4.6 4.6 1.5L33 25c-2-1.6-4.9-2.6-9-2.6-1.9 0-3.7.3-5 .8z"/></svg>
+            Sign in with Google
+          </button>
+
+          <button class="social-btn" id="appleBtn" type="button">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16.365 1.43c0 1.03-.4 2.03-1.12 2.79-.8.89-1.9 1.55-3.06 1.55-.09-1.14.37-2.33 1.19-3.2.8-.86 1.88-1.48 1.99-1.14.08.22.19.5.2.99z" stroke="#111827" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.2 4.2c.97-.03 2.56.56 3.52 1.5.7.7 1.22 1.68 1.46 2.9.32 1.62-.04 3.17-.64 4.36-.66 1.3-1.78 2.66-3.3 2.66-1.48 0-1.93-.9-3.65-.9-1.79 0-2.5.86-3.63.86-1.34 0-2.55-1.27-3.35-2.67C2.4 11.6 3 8.4 5.2 6.2c1.12-1.12 2.48-1.45 3.78-1.45 1.13 0 2.4.6 3.22.05z" stroke="#111827" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Sign in with Apple
+          </button>
+        </div>
+
+        <p class="cookie">
+          We use strictly necessary cookies to enable essential functions, such as security and authentication. For more information, see our
+          <a href="#" style="color:var(--primary-dark);text-decoration:none;font-weight:600">Cookie Policy</a> and
+          <a href="#" style="color:var(--primary-dark);text-decoration:none;font-weight:600">Privacy Policy</a>.
+        </p>
+
+      </section>
+    </main>
   </div>
 
-  <div class="section">
-    <h2>Who Can Join?</h2>
-    <p>Membership is open to:</p>
-    <ul>
-      <li>Active duty and retired members of the Army, Marine Corps, Navy, Air Force, Coast Guard, and Space Force</li>
-      <li>Department of Defense civilians</li>
-      <li>Family members of existing NFCU members</li>
-    </ul>
-    <p><strong>Note:</strong> Navy Federal does not charge membership fees and offers 24/7 customer support.</p>
-  </div>
+  <script>
+    // basic interactions - replace URLs with your own
+    document.getElementById('continueBtn').addEventListener('click', function(){
+      const email = document.getElementById('email').value.trim();
+      if(!email){
+        alert('Please enter your email address.');
+        return;
+      }
+      alert('Continue with ' + email);
+      // window.location.href = '/next-step.html';
+    });
 
-  <div class="section">
-    <h2>Popular Products & Services</h2>
-    <ul>
-      <li>Zero-fee Checking & Savings accounts</li>
-      <li>Low-interest Credit Cards with rewards</li>
-      <li>VA Loans & Auto Financing</li>
-      <li>Mobile Banking & Bill Pay</li>
-    </ul>
-    <p>Explore more on the <a href="https://www.navyfederal.org" target="_blank" rel="noopener">official Navy Federal website</a>.</p>
-  </div>
-
-  <div class="section">
-    <h2>Disclaimer</h2>
-    <p>This website is not affiliated with Navy Federal Credit Union. It is an independent informational resource for educational purposes only. For official services, visit <a href="https://www.navyfederal.org" target="_blank">navyfederal.org</a>.</p>
-  </div>
-
-  <div class="section">
-    <h2>Privacy Policy</h2>
-    <p>We do not collect or store any personal information on this site. Any links to external websites open in a new tab and are not under our control.</p>
-  </div>
-
-  <div class="section">
-    <h2>Contact Us</h2>
-    <p>If you have any questions or feedback, please email: <a href="mailto:support@example.com">multinevy8860@gmail.com</a></p>
-  </div>
-</main>
-
-<footer>
- &copy; 2025 multinevy. All rights reserved.
-</footer>
-
+    document.getElementById('passkeyBtn').addEventListener('click', function(){ alert('Passkey sign-in flow'); });
+    document.getElementById('googleBtn').addEventListener('click', function(){ alert('Google sign-in flow'); });
+    document.getElementById('appleBtn').addEventListener('click', function(){ alert('Apple sign-in flow'); });
+  </script>
 </body>
 </html>
